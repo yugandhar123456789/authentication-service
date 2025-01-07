@@ -14,9 +14,12 @@ pipeline {
             steps {
                 bat "mvn clean install -DskipTests"
             }
-            stage('PreDeploy'){
-                steps{bat "docker rm -f auth-cntr" }
+        }
+        stage('PreDeploy') {
+            steps {
+                bat "docker rm -f auth-cntr"
             }
+        }
         stage('Test') {
             steps {
                 bat "mvn test"
@@ -30,4 +33,3 @@ pipeline {
         }
     }
 }
-
