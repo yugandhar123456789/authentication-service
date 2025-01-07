@@ -7,14 +7,14 @@ pipeline {
 		stage('Clone'){
 			steps {git url:'https://github.com/sep-2024-trivandrum/authentication-service.git', branch:'main’}			}
 		stage('Build'){
-			steps {sh "mvn clean install -DskipTests"}
+			steps {bat "mvn clean install -DskipTests"}
 		}
 		stage('Test'){
-			steps{sh "mvn test"}		}
+			steps{bat "mvn test"}		}
 		}
 		stage('Deploy') {
-			steps { sh "docker build -t auth-image ."
-			            sh "docker run -p 8090:8090 -d --name auth-container auth-image"}
+			steps { bat "docker build -t auth-image ."
+			            bat "docker run -p 6090:8090 -d --name auth-container auth-image"}
 		}
 	}
 }
